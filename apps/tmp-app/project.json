@@ -1,0 +1,116 @@
+{
+	"name": "tmp-app",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "application",
+	"prefix": "app",
+	"sourceRoot": "apps/tmp-app/src",
+	"tags": [],
+	"targets": {
+		"serve": {
+			"continuous": true,
+			"executor": "@nx/angular:dev-server",
+			"options": {
+				"buildTarget": "tmp-app:build"
+			},
+			"configurations": {
+				"production": {
+					"buildTarget": "tmp-app:build:production"
+				},
+				"development": {
+					"buildTarget": "tmp-app:build:development"
+				}
+			},
+			"defaultConfiguration": "development"
+		},
+		"build": {
+			"executor": "@nx/angular:application",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"outputPath": "dist/apps/tmp-app-app",
+				"browser": "apps/tmp-app/config/app/main.ts",
+				"tsConfig": "apps/tmp-app/config/app/tsconfig.app.json",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					{
+						"input": "apps/tmp-app/public",
+						"glob": "**/*",
+						"output": "public"
+					},
+					"apps/tmp-app/src/favicon.ico"
+				],
+				"styles": ["apps/tmp-app/src/styles.scss"],
+				"allowedCommonJsDependencies": ["guid-typescript"]
+			},
+			"configurations": {
+				"production": {
+					"budgets": [
+						{
+							"type": "initial",
+							"maximumWarning": "1mb",
+							"maximumError": "2mb"
+						},
+						{
+							"type": "anyComponentStyle",
+							"maximumWarning": "4mb",
+							"maximumError": "10mb"
+						}
+					],
+					"outputHashing": "all"
+				},
+				"development": {
+					"optimization": false,
+					"extractLicenses": false,
+					"sourceMap": true
+				}
+			},
+			"defaultConfiguration": "development"
+		},
+		"ngx-build": {
+			"executor": "ngx-build-plus:browser",
+			"options": {
+				"outputPath": "dist/apps/tmp-app",
+				"index": "apps/tmp-app/src/index.html",
+				"main": "apps/tmp-app/config/ce/main.ce.ts",
+				"tsConfig": "apps/tmp-app/config/ce/tsconfig.ce.json",
+				"inlineStyleLanguage": "scss",
+				"singleBundle": true,
+				"assets": [
+					{
+						"input": "apps/tmp-app/public",
+						"glob": "**/*",
+						"output": "public"
+					}
+				],
+				"styles": [],
+				"scripts": [],
+				"allowedCommonJsDependencies": ["guid-typescript"]
+			},
+			"configurations": {
+				"production": {
+					"budgets": [
+						{
+							"type": "initial",
+							"maximumWarning": "5mb",
+							"maximumError": "2mb"
+						},
+						{
+							"type": "anyComponentStyle",
+							"maximumWarning": "5mb",
+							"maximumError": "2mb"
+						}
+					],
+					"outputHashing": "none"
+				},
+				"development": {
+					"buildOptimizer": false,
+					"optimization": false,
+					"vendorChunk": true,
+					"extractLicenses": false,
+					"sourceMap": true,
+					"namedChunks": true
+				}
+			},
+			"defaultConfiguration": "production"
+		}
+	}
+}

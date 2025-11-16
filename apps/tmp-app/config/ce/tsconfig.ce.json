@@ -1,0 +1,15 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./dist/out-tsc",
+		"types": []
+	},
+	"files": [
+		"main.ce.ts",
+		"app.config.ce.ts"
+	],
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.ts"
+	]
+}
