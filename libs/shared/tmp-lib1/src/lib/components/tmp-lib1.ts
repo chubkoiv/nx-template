@@ -6,7 +6,7 @@ import { TmpLib1HandlerComponent } from "./tmp-lib1-handler";
 	imports: [TmpLib1HandlerComponent],
 	template: `
 		<div
-			[style.border]="'1px solid red'"
+			[style.border]="'1px dashed black'"
 			[style.border-radius]="'10px'"
 			[style.padding]="'5px'"
 		>

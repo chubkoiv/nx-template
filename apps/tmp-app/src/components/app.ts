@@ -8,7 +8,7 @@ import { APP_CONFIG } from "../tokens/app-config.token";
 	imports: [TmpLib1WrapperComponent, TmpLib2Component],
 	selector: "tmp-root",
 	template: `
-		<h1>{{ appConfig.appName }}</h1>
+		<h1 [style.color]="'red'">{{ appConfig.appName }}</h1>
 		<p>Компонент1: </p>
 		<div [style.display]="'flex'">
 			<tmp-lib1 />
